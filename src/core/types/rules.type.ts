@@ -1,0 +1,1 @@
+export type RulesType = (value: any, ...args: any[]) => boolean;
