@@ -5,12 +5,14 @@ import {ValidationRuleInterface} from "./core/interfaces/validationRule.interfac
 
 export class Validator {
     private readonly schema: ValidationSchemaInterface;
+
     constructor(schema: ValidationSchemaInterface) {
         this.schema = schema;
     }
 
     public validate(data: { [key: string]: any }): ValidationResultInterface {
         const errors: ValidationResultInterface = {};
+
         for (const field in this.schema) {
             const fieldRules: ValidationRuleInterface[] = this.schema[field];
             errors[field] = [];

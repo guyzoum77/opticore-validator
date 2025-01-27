@@ -1,5 +1,5 @@
 {
-  "name": "opticore-validator",
+  "name": "@opticore/validator",
   "version": "0.0.1",
   "description": "Validator schema with many rule, and custom message",
   "main": "dist/index.js",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@types/gradient-string": "^1.1.6",
     "ansi-colors": "^4.1.3",
+    "date-fns": "^3.6.0",
     "gradient-string": "^2.0.2",
     "path": "^0.12.7",
     "ts-node": "^10.9.2",

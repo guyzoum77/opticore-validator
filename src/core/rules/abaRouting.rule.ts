@@ -1,6 +1,6 @@
 export function abaRoutingRule(value: any): boolean {
-    if (typeof value !== 'string') return false;
-    const abaRegex = /^\d{9}$/;
+    if (typeof value !== "string") return false;
+    const abaRegex: RegExp = /^\d{9}$/;
     if (!abaRegex.test(value)) return false;
   
     const checksum = (7 * (parseInt(value[0]) + parseInt(value[3]) + parseInt(value[6]))
@@ -9,4 +9,3 @@ export function abaRoutingRule(value: any): boolean {
   
     return checksum === 0;
 }
-  

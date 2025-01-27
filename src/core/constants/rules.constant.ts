@@ -37,6 +37,32 @@ import {containsSpecialCharRule} from "../rules/containsSpecialChar.rule";
 import {containsLowercaseRule} from "../rules/containsLowercase.rule";
 import {containsDigitRule} from "../rules/containsDigit.rule";
 import {containsUppercaseRule} from "../rules/containsUppercase.rule";
+import {afterRule} from "../rules/after.rule";
+import {beforeRule} from "../rules/before.rule";
+import {decimalRule} from "../rules/decimal.rule";
+import {divisibleByRule} from "../rules/divisibleBy.rule";
+import {eanRule} from "../rules/EAN.rule";
+import {emptyRule} from "../rules/empty.rule";
+import {fqdnRule} from "../rules/fqdn.rule";
+import {freightContainerIDRule} from "../rules/freightContainerID.rule";
+import {fullWidthRule} from "../rules/fullWidth.rule";
+import {halfWidthRule} from "../rules/halfWidth.rule";
+import {hashRule} from "../rules/hash.rule";
+import {hexadecimalRule} from "../rules/hexadecimal.rule";
+import {hexColorRule} from "../rules/hexColor.rule";
+import {hslRule} from "../rules/hsl.rule";
+import {identityCardRule} from "../rules/identityCard.rule";
+import {imeiRule} from "../rules/imei.rule";
+import {inRule} from "../rules/in.rule";
+import {intRule} from "../rules/int.rule";
+import {isbnRule} from "../rules/isbn.rule";
+import {isinRule} from "../rules/isin.rule";
+import {isRCRule} from "../rules/isRC.rule";
+import {issnRule} from "../rules/issn.rule";
+import {jsonRule} from "../rules/json.rule";
+import {jwtRule} from "../rules/jwt.rule";
+import {latLongRule} from "../rules/latLong.rule";
+import {lengthRule} from "../rules/length.rule";
 
 export const rulesConstant: RuleSetType = {
     required: requiredRule,
@@ -76,5 +102,31 @@ export const rulesConstant: RuleSetType = {
     containsUppercase: containsUppercaseRule,
     containsDigit: containsDigitRule,
     dataURI: dataURIRule,
-    float: floatRule
+    float: floatRule,
+    after: afterRule,
+    before: beforeRule,
+    decimal: decimalRule,
+    divisibleBy: divisibleByRule,
+    ean: eanRule,
+    empty: emptyRule,
+    fqdn: fqdnRule,
+    freightContainerID: freightContainerIDRule,
+    fullWidth: fullWidthRule,
+    halfWidth: halfWidthRule,
+    hash: hashRule,
+    hexadecimal: hexadecimalRule,
+    hexColor: hexColorRule,
+    hsl: hslRule,
+    identityCard: identityCardRule,
+    imei: imeiRule,
+    in: inRule,
+    int: intRule,
+    isbn: isbnRule,
+    isin: isinRule,
+    isRC: isRCRule,
+    issn: issnRule,
+    json: jsonRule,
+    jwt: jwtRule,
+    latLong: latLongRule,
+    length: lengthRule,
 };
