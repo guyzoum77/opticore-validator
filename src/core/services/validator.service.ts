@@ -1,4 +1,9 @@
-class SValidator {
+import {CCurrencies} from "../constants/currencies.constant";
+import {CCode} from "../constants/code.constant";
+import {CAlpha2Code, CCountryCode} from "../constants/alpha2Code.constant";
+import {CAlpha3Code} from "../constants/alpha3Code.constant";
+
+export class SValidator {
     static parseDate(dateString: string, format: string): Date {
         // For simplicity, assume the format is 'YYYY-MM-DD' as an example
         const parts: string[] = dateString.split('-');
@@ -93,5 +98,39 @@ class SValidator {
 
         // If the sum modulo 10 is 0, the ISIN is valid
         return sum % 10 === 0;
+    }
+
+    // List of valid ISO 4217 currency codes
+    static ISOCurrencies(): Set<string> {
+        return new Set(CCurrencies);
+    }
+
+    static validateISO6346Checksum(containerID: string): boolean {
+        const characterValues: { [key: string]: number } = {};
+        for (let i = 0; i < 26; i++) {
+            characterValues[String.fromCharCode(65 + i)] = i + 10;
+        }
+
+        let sum: number = 0;
+        for (let i = 0; i < 10; i++) {
+            const char: string = containerID[i];
+            const value: number = characterValues[char] != undefined ? characterValues[char] : parseInt(char, 10);
+            sum += value * Math.pow(2, i);
+        }
+
+        const checkDigit: number = sum % 11 % 10;
+        return checkDigit === parseInt(containerID[10], 10);
+    }
+
+    static ISOCodes(): Set<string> {
+        return new Set(CCode);
+    }
+
+    static ISOAlpha2Codes(): Set<string> {
+        return new Set(CAlpha2Code);
+    }
+
+    static ISOAlpha3Codes(): Set<string> {
+        return new Set(CAlpha3Code);
     }
 }

@@ -293,6 +293,24 @@ const schema = {
             message: 'There must be between 1 and 5 tags.',
         },
     ],
+    currencyCode: [
+        { rule: 'iso4217', message: 'Invalid ISO 4217 currency code.' }
+    ],
+    containedID: [
+        { rule: 'iso6346', message: 'Invalid ISO 6346 container identification number.' }
+    ],
+    language: [
+        { rule: 'iso6391', message: 'Invalid ISO 639-1 language code.' }
+    ],
+    timestamp: [
+        { rule: 'iso8601', message: 'Invalid ISO 8601 date/time format.' }
+    ],
+    countryCode: [
+        { rule: 'iso31661Alpha2', message: 'Invalid ISO 3166-1 Alpha-2 country code.' }
+    ],
+    anotherCountryCode: [
+        { rule: 'iso31661Alpha3', message: 'Invalid ISO 3166-1 Alpha-3 country code.' }
+    ]
 };
 
 const data = {
@@ -359,10 +377,14 @@ const data = {
     location: '37.7749,-200.4194',
     familyName: 'j',
     ownTags: [],
+    currencyCode: 123,
+    containedID: "XYZU6543210", // or "123U6543210" or "ABCD1234567" are invalide
+    language: "xx", // "eng" or 123 are invalide
+    timestamp: "29-01-2024", // "2024-02-30T12:30:45Z" is invalid
+    countryCode: "XX",
+    anotherCountryCode: "XXX"
 };
 
 const validator: Validator = new Validator(schema);
 const errors: ValidationResultInterface = validator.validate(data);
-
-//console.log('currency is :', data.after);
 console.log(errors);
