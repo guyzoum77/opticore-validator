@@ -55,16 +55,15 @@ import {identityCardRule} from "../rules/identityCard.rule";
 import {imeiRule} from "../rules/imei.rule";
 import {inRule} from "../rules/in.rule";
 import {intRule} from "../rules/int.rule";
-import {isbnRule} from "../rules/isbn.rule";
-import {isinRule} from "../rules/isin.rule";
-import {isRCRule} from "../rules/isRC.rule";
+import {bnRule} from "../rules/bn.rule";
+import {rcRule} from "../rules/rc.rule";
 import {issnRule} from "../rules/issn.rule";
 import {jsonRule} from "../rules/json.rule";
 import {jwtRule} from "../rules/jwt.rule";
 import {latLongRule} from "../rules/latLong.rule";
 import {lengthRule} from "../rules/length.rule";
 import {iso4217Rule} from "../rules/iso4217.rule";
-import {iso6346, iso6346Rule} from "../rules/iso6346.rule";
+import {iso6346Rule} from "../rules/iso6346.rule";
 import {iso6391Rule} from "../rules/iso6391.rule";
 import {iso8601Rule} from "../rules/iso8601.rule";
 import {iso31661Alpha2Rule} from "../rules/iso31661Alpha2.rule";
@@ -127,9 +126,8 @@ export const rulesConstant: RuleSetType = {
     imei: imeiRule,
     in: inRule,
     int: intRule,
-    isbn: isbnRule,
-    isin: isinRule,
-    isRC: isRCRule,
+    bn: bnRule,
+    rc: rcRule,
     issn: issnRule,
     json: jsonRule,
     jwt: jwtRule,

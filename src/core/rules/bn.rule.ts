@@ -1,10 +1,12 @@
+import {SValidator} from "../services/validator.service";
+
 /**
  * Validates whether a value is a valid ISBN (either ISBN-10 or ISBN-13).
  *
  * @param value - The value to validate.
  * @returns {boolean} - True if the value is a valid ISBN, false otherwise.
  */
-export function isbnRule(value: any): boolean {
+export function bnRule(value: any): boolean {
     const isbn10Pattern: RegExp = /^(?:\d[\ |-]){9}[\d|X]$/; // ISBN-10 pattern
     const isbn13Pattern: RegExp = /^(?:\d[\ |-]){13}$/; // ISBN-13 pattern
 
