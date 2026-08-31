@@ -2,7 +2,7 @@ import {defineConfig} from "tsup";
 export default defineConfig({
     name: "opticore-validator",
     format: ["cjs", "esm"],
-    entry: ['src/index.ts'] ,
+    entry: { index: 'src/index.ts', opticoreValidator: 'bin/opticoreValidator.ts' },
     dts: true,
     shims: true,
     skipNodeModulesBundle: true,

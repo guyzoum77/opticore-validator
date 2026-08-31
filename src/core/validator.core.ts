@@ -1,7 +1,8 @@
-import {ValidationSchemaInterface} from "./interfaces/validationSchema.interface";
-import {ValidationResultInterface} from "./interfaces/validationResult.interface";
-import {ValidationRuleInterface} from "./interfaces/validationRule.interface";
-import {rulesConstant} from "./constants/rules.constant";
+import { ValidationSchemaInterface } from "./interfaces/validationSchema.interface";
+import { ValidationResultInterface } from "./interfaces/validationResult.interface";
+import { ValidationRuleInterface } from "./interfaces/validationRule.interface";
+import { rulesConstant } from "./constants/rules.constant";
+import { RulesType } from "./types/rules.type";
 
 export class Validator {
     private readonly schema: ValidationSchemaInterface;
@@ -18,7 +19,7 @@ export class Validator {
             errors[field] = [];
 
             for (const { rule, args = [], message } of fieldRules) {
-                const validationRule = rulesConstant[rule];
+                const validationRule: RulesType = rulesConstant[rule];
                 if (!validationRule) {
                     throw new Error(`Validation rule ${rule} is not defined.`);
                 }
