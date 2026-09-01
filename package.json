@@ -1,10 +1,23 @@
 {
   "name": "opticore-validator",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Validator schema with many rule, and custom message",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.ts",
+      "import": "./dist/cli.mjs",
+      "require": "./dist/cli.js"
+    },
+    "./package.json": "./package.json"
+  },
   "bin": {
     "opticore-validator": "dist/opticoreValidator.js"
   },

@@ -3,7 +3,7 @@ import { Command } from "commander";
 import chalk from "chalk";
 import cfonts from "cfonts";
 
-import { makeValidatorCommand } from "./commands/makeValidator.command";
+import { attachMakeValidatorCommand, forceOpticoreColors, helpConfig, VALIDATOR_VERSION } from "./registerValidatorCommand";
 
 function printBanner(): void {
     cfonts.say("OpticoreJs Validator", {
@@ -25,17 +25,7 @@ function printBanner(): void {
     console.log(` ${chalk.bold.dim("Documentation")}  ${chalk.underline.cyan("https://github.com/guyzoum77/opticore-validator")}\n`);
 }
 
-function handleError(err: unknown): void {
-    const msg: string = err instanceof Error ? err.message : "An unexpected error occurred";
-    console.error("");
-    console.error(
-        chalk.bgRed.white.bold("  ERROR  ") +
-        chalk.red(` ${msg}`)
-    );
-    console.error("");
-    process.exit(1);
-}
-
+forceOpticoreColors();
 printBanner();
 
 const program = new Command();
@@ -43,33 +33,13 @@ program
     .name("opticore-validator")
     .description(chalk.dim("Generate validation schemas and wire the validate middleware"))
     .version(
-        "1.0.0",
+        VALIDATOR_VERSION,
         "-v, --version",
         "Output the current version"
     )
-    .configureHelp({
-        sortSubcommands: true,
-        styleTitle:                (str: string) => chalk.bold.yellow(str),
-        styleUsage:                (str: string) => chalk.green(str),
-        styleCommandText:          (str: string) => chalk.green(str),
-        styleOptionTerm:           (str: string) => chalk.green(str),
-        styleSubcommandTerm:       (str: string) => chalk.green(str),
-        styleOptionDescription:    (str: string) => chalk.dim(str),
-        styleSubcommandDescription:(str: string) => chalk.dim(str),
-        styleCommandDescription:   (str: string) => chalk.dim(str),
-    });
+    .configureHelp(helpConfig);
 
-program
-    .command("make:validator")
-    .aliases(["generate", "mv"])
-    .description("Interactively create a validation schema file for an existing feature")
-    .action(async (): Promise<void> => {
-        try {
-            await makeValidatorCommand();
-        } catch (e) {
-            handleError(e);
-        }
-    });
+attachMakeValidatorCommand(program);
 
 if (!process.argv.slice(2).length) {
     program.outputHelp();
