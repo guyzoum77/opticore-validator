@@ -13,11 +13,11 @@ export function printRulesTable(): void {
     const sep: string = chalk.dim("-".repeat(col * perRow + perRow));
 
     console.log("");
-    console.log(chalk.bold.yellow(" Available rules") + chalk.dim(`  (${RULE_NAMES.length})`));
+    console.log(chalk.bold.dim(" Available rules") + chalk.dim(`  (${RULE_NAMES.length})`));
     console.log(sep);
     for (let i = 0; i < RULE_NAMES.length; i += perRow) {
         const row: string[] = RULE_NAMES.slice(i, i + perRow);
-        console.log(" " + row.map((r) => chalk.green(r.padEnd(col))).join(""));
+        console.log(" " + row.map((r) => chalk.dim(r.padEnd(col))).join(""));
     }
     console.log(sep);
     console.log("");

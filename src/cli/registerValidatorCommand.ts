@@ -7,11 +7,11 @@ export const VALIDATOR_VERSION = "1.1.0";
 
 export const helpConfig = {
     sortSubcommands: true,
-    styleTitle:                (str: string) => chalk.bold.yellow(str),
-    styleUsage:                (str: string) => chalk.green(str),
-    styleCommandText:          (str: string) => chalk.green(str),
-    styleOptionTerm:           (str: string) => chalk.green(str),
-    styleSubcommandTerm:       (str: string) => chalk.green(str),
+    styleTitle:                (str: string) => chalk.bold.hex("#427ff5")(str),
+    styleUsage:                (str: string) => chalk.hex("#D4E4FF")(str),
+    styleCommandText:          (str: string) => chalk.hex("#D4E4FF")(str),
+    styleOptionTerm:           (str: string) => chalk.hex("#D4E4FF")(str),
+    styleSubcommandTerm:       (str: string) => chalk.hex("#D4E4FF")(str),
     styleOptionDescription:    (str: string) => chalk.dim(str),
     styleSubcommandDescription:(str: string) => chalk.dim(str),
     styleCommandDescription:   (str: string) => chalk.dim(str),
@@ -30,7 +30,7 @@ export const helpConfig = {
  */
 export function forceOpticoreColors(): void {
     if (process.env.NO_COLOR === undefined && process.env.FORCE_COLOR === undefined) {
-        process.env.FORCE_COLOR = "1";
+        process.env.FORCE_COLOR = "3";
         chalk.level = 3;
     }
 }

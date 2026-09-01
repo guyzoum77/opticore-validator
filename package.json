@@ -1,6 +1,6 @@
 {
   "name": "opticore-validator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Validator schema with many rule, and custom message",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

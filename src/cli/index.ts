@@ -6,10 +6,10 @@ import cfonts from "cfonts";
 import { attachMakeValidatorCommand, forceOpticoreColors, helpConfig, VALIDATOR_VERSION } from "./registerValidatorCommand";
 
 function printBanner(): void {
-    cfonts.say("OpticoreJs Validator", {
+    cfonts.say("OpticoreJs", {
         font: "block",
         align: "left",
-        colors: ["yellow", "#FF6B35"],
+        colors: ["#D4E4FF", "#427ff5"],
         background: "transparent",
         letterSpacing: 1,
         lineHeight: 1,
@@ -17,10 +17,10 @@ function printBanner(): void {
         maxLength: "0",
     });
 
-    const orange = chalk.bold.hex("#FF6B35");
-    const dim    = chalk.bold.yellow;
+    const name   = chalk.bold.hex("#5384d7");
+    const dim    = chalk.bold.hex("#D4E4FF");
 
-    console.log(` ${orange("O P T I C O R E J S  V A L I D A T O R")}`);
+    console.log(` ${name("OPTICOREJS  V A L I D A T O R")}`);
     console.log(` ${dim("Schema validation & Express middleware for Opticore projects")}\n`);
     console.log(` ${chalk.bold.dim("Documentation")}  ${chalk.underline.cyan("https://github.com/guyzoum77/opticore-validator")}\n`);
 }

@@ -267,7 +267,7 @@ function nextStepsMessage(schemas: Map<string, SchemaFields>, featureName: strin
 }
 
 export async function makeValidatorCommand(): Promise<void> {
-    intro(chalk.bgYellow.black("  Opticore Validator — make:validator  "));
+    intro(chalk.bgHex("#427ff5").white("  Opticore Validator — make:validator  "));
 
     const projectRoot: string = process.cwd();
     const features: string[] = listFeatures(projectRoot);
