@@ -1,5 +1,5 @@
 import * as path from "path";
-import * as fs from "fs-extra";
+import fs from "fs-extra";
 import chalk from "chalk";
 import colors from "ansi-colors";
 import { intro, outro, select, text, confirm, isCancel, cancel, log } from "@clack/prompts";
