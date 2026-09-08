@@ -12,6 +12,8 @@ import {ipv4Rule} from "../rules/ipv4.rule";
 import {ipv6Rule} from "../rules/ipv6.rule";
 import {urlRule} from "../rules/url.rule";
 import {objectRule} from "../rules/object.rule";
+import {stringRule} from "../rules/string.rule";
+import {enumRule} from "../rules/enum.rule";
 import {digitRule} from "../rules/digit.rule";
 import {integerRule} from "../rules/integer.rule";
 import {ipRule} from "../rules/ip.rule";
@@ -83,6 +85,8 @@ export const rulesConstant: RuleSetType = {
     ipv6: ipv6Rule,
     url: urlRule,
     object: objectRule,
+    string: stringRule,
+    enum: enumRule,
     digit: digitRule,
     integer: integerRule,
     ip: ipRule,
