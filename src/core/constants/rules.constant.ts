@@ -64,6 +64,7 @@ import {jsonRule} from "../rules/json.rule";
 import {jwtRule} from "../rules/jwt.rule";
 import {latLongRule} from "../rules/latLong.rule";
 import {lengthRule} from "../rules/length.rule";
+import {matchesRule} from "../rules/matches.rule";
 import {iso4217Rule} from "../rules/iso4217.rule";
 import {iso6346Rule} from "../rules/iso6346.rule";
 import {iso6391Rule} from "../rules/iso6391.rule";
@@ -137,6 +138,7 @@ export const rulesConstant: RuleSetType = {
     jwt: jwtRule,
     latLong: latLongRule,
     length: lengthRule,
+    matches: matchesRule,
     iso4217: iso4217Rule,
     iso6346: iso6346Rule,
     iso6391: iso6391Rule,

@@ -1,42 +1,36 @@
 import {ByteLengthOptionsInterface} from "../interfaces/byteLengthOptions.interface";
 
 /**
+ * Validates the byte length of a string (UTF-8 by default).
+ *
+ * Both call styles are supported:
+ *  - `byteLength(value, min, max?)`            — the positional form documented in the README, which is what a
+ *                                                schema such as `{ rule: "byteLength", args: [1, 512] }` produces;
+ *  - `byteLength(value, { min, max, encoding })` — the options-object form.
+ *
+ * (Only the object form used to be read, so a schema using the documented positional arguments silently
+ * accepted every string.)
  *
  * @param value
- * @param options
- *
- * The byteLengthRule function now accepts an option parameter of type ByteLengthOptions.
- *
- * ByteLengthOptions includes min and max properties
- * to specify the minimum and maximum byte length constraints for the string.
- * Inside the function, byte length constraints are checked using min and max values provided in options.
- *
- * The function calculates the byte length of the string using Node.js Buffer.byteLength method with the specified
- * encoding (defaulting to 'utf8').
+ * @param minOrOptions - the minimum byte length, or an options object.
+ * @param max - the maximum byte length (positional form only).
  */
-export function byteLengthRule(value: any, options?: ByteLengthOptionsInterface): boolean {
+export function byteLengthRule(value: any, minOrOptions?: number | ByteLengthOptionsInterface, max?: number): boolean {
     if (typeof value !== "string") {
         return false;
     }
 
-    const defaultOptions: ByteLengthOptionsInterface = {
-        encoding: options?.encoding || "utf8",
-        min: options?.min ?? 0,
-        max: options?.max,
-    };
+    const options: ByteLengthOptionsInterface = typeof minOrOptions === "object" && minOrOptions !== null
+        ? minOrOptions
+        : { min: minOrOptions, max };
 
-    const { encoding, min, max } = defaultOptions;
-
+    const encoding: BufferEncoding = options.encoding || "utf8";
+    const min: number = options.min ?? 0;
     const byteLength: number = Buffer.byteLength(value, encoding);
 
-    if (min !== undefined && byteLength < min) {
+    if (byteLength < min) {
         return false;
     }
 
-    if (max !== undefined && byteLength > max) {
-        return false;
-    }
-
-    return true;
+    return options.max === undefined || byteLength <= options.max;
 }
-  

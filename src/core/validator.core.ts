@@ -3,6 +3,7 @@ import { ValidationResultInterface } from "./interfaces/validationResult.interfa
 import { ValidationRuleInterface } from "./interfaces/validationRule.interface";
 import { rulesConstant } from "./constants/rules.constant";
 import { RulesType } from "./types/rules.type";
+import { ValidatorOptionsInterface } from "./interfaces/validatorOptions.interface";
 
 export class Validator {
     private readonly schema: ValidationSchemaInterface;
@@ -11,11 +12,21 @@ export class Validator {
         this.schema = schema;
     }
 
-    public validate(data: { [key: string]: any }): ValidationResultInterface {
+    /**
+     * @param data - the values to check, by field name.
+     * @param options - `skipAbsentOptional`: do not run the rules of an absent field that is not `required`
+     *                  (see ValidatorOptionsInterface). This is the rule the `validate()` middleware applies.
+     */
+    public validate(data: { [key: string]: any }, options: ValidatorOptionsInterface = {}): ValidationResultInterface {
         const errors: ValidationResultInterface = {};
 
         for (const field in this.schema) {
             const fieldRules: ValidationRuleInterface[] = this.schema[field];
+
+            if (options.skipAbsentOptional && data[field] === undefined && !fieldRules.some((r: ValidationRuleInterface): boolean => r.rule === "required")) {
+                continue;
+            }
+
             errors[field] = [];
 
             for (const { rule, args = [], message } of fieldRules) {

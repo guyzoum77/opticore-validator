@@ -240,9 +240,11 @@ function renderEnums(validatorName: string, enums: Record<string, string[]>): st
 }
 
 function renderFile(validatorName: string, schemas: Map<string, SchemaFields>, enums: Record<string, string[]>): string {
-    const blocks: string[] = [`import { EnumWhitelist, ValidationSchema } from "opticore-validator";`, ""];
+    // Only import what the file uses: an unused `EnumWhitelist` import fails the project's lint.
+    const hasEnums: boolean = Object.keys(enums).length > 0;
+    const blocks: string[] = [`import { ${hasEnums ? "EnumWhitelist, " : ""}ValidationSchema } from "opticore-validator";`, ""];
 
-    if (Object.keys(enums).length > 0) {
+    if (hasEnums) {
         blocks.push(renderEnums(validatorName, enums));
         blocks.push("");
     }
