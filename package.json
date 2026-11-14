@@ -1,6 +1,6 @@
 {
   "name": "opticore-validator",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Validator schema with many rule, and custom message",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
@@ -65,8 +65,8 @@
     "commander": "^15.1.0",
     "date-fns": "^4.4.0",
     "fs-extra": "^11.4.1",
-    "opticore-express": "^1.0.9",
-    "opticore-http-response": "^1.0.13"
+    "opticore-express": "^1.0.10",
+    "opticore-http-response": "^1.0.14"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
