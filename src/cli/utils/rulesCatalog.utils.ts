@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import { chalk } from "./chalk.utils";
 import { rulesConstant } from "../../core/constants/rules.constant";
 
 export const RULE_NAMES: string[] = Object.keys(rulesConstant).sort();

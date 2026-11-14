@@ -17,6 +17,6 @@ export function identityCardRule(value: any, options?: IIdentityCardOptions): bo
         any: /^[A-Za-z0-9-]+$/, // Generic pattern
     };
 
-    const regex: RegExp = patterns[country] || patterns['any'];
+    const regex: RegExp = (country !== undefined && Object.hasOwn(patterns, country) ? patterns[country] : undefined) || patterns['any'];
     return regex.test(value);
 }

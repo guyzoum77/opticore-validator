@@ -1,6 +1,6 @@
 import * as path from "path";
 import fs from "fs-extra";
-import chalk from "chalk";
+import { chalk } from "../utils/chalk.utils";
 import colors from "ansi-colors";
 import { intro, outro, select, text, confirm, isCancel, cancel, log } from "@clack/prompts";
 import { listFeatures, featureValidatorsDir } from "../utils/features.utils";

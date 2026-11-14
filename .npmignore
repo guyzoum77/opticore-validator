@@ -3,5 +3,5 @@ node_modules/
 src/
 .gitignore
 tsconfig.json
-tsup.config.ts
+tsdown.config.*
 logs/

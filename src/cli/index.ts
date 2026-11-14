@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from "commander";
-import chalk from "chalk";
+import { chalk } from "./utils/chalk.utils";
 import cfonts from "cfonts";
 
 import { attachMakeValidatorCommand, forceOpticoreColors, helpConfig, VALIDATOR_VERSION } from "./registerValidatorCommand";

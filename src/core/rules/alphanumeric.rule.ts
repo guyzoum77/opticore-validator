@@ -27,7 +27,8 @@ export function alphanumericRule(value: any, options?: AlphanumericOptionsInterf
     };
 
     const { locale, ignore } = defaultOptions;
-    const pattern: RegExp = alphanumericPatternsUtils[locale] || /^[A-Za-z0-9\s]+$/; // Default to English (the United States)
+    // own keys only: a locale such as "constructor" must not resolve to an Object.prototype member
+    const pattern: RegExp = (Object.hasOwn(alphanumericPatternsUtils, locale!) ? alphanumericPatternsUtils[locale!] : undefined) || /^[A-Za-z0-9\s]+$/; // Default to English (the United States)
     let stringValue: string = value;
 
     if (ignore) {

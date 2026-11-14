@@ -4,6 +4,7 @@ import { Validator } from "../validator.core";
 import { ValidationResultInterface } from "../interfaces/validationResult.interface";
 import { ValidationSchemaInterface } from "../interfaces/validationSchema.interface";
 import { EnumWhitelist } from "../types/enumWhitelist.type";
+import { pushError, readField } from "../../utils/safeAccess.utils";
 
 export interface ValidateOptions {
     apiVersion?: string;
@@ -34,12 +35,11 @@ export function validate(
 
         for (const field of Object.keys(enums)) {
             const allowedValues = enums[field] as readonly string[];
-            const value = data[field];
+            const value = readField(data, field);
             if (value === undefined || allowedValues.includes(value)) {
                 continue;
             }
-            errors[field] = errors[field] ?? [];
-            errors[field].push(`Field ${field} must be one of: ${allowedValues.join(", ")}.`);
+            pushError(errors, field, `Field ${field} must be one of: ${allowedValues.join(", ")}.`);
         }
 
         if (Object.keys(errors).length > 0) {

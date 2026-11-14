@@ -17,7 +17,8 @@ export function dateRule(value: any, options?: DateOptionsInterface): boolean {
 
     // Build a dynamic regex pattern based on delimiters
     if (delimiters) {
-        delimiterPattern = delimiters.map((d: string): string => `\\${d}`).join("|");
+        // grouped and fully escaped: an alternation left bare split the whole pattern (`^\d{4}-|/\d{2}…`)
+        delimiterPattern = `(?:${delimiters.map((d: string): string => d.replace(/[.*+?^${}()|[\]\\\/-]/g, "\\$&")).join("|")})`;
     }
     const regex: RegExp = new RegExp(`^\\d{4}${delimiterPattern}\\d{2}${delimiterPattern}\\d{2}$`);
 

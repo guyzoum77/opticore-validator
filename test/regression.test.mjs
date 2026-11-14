@@ -3,7 +3,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
-const { Validator, validate } = require("../dist/index.js");
+const { Validator, validate } = require("../dist/index.cjs");
 
 const check = (rules, value) => Object.keys(new Validator({ f: rules }).validate({ f: value })).length === 0;
 

@@ -134,8 +134,8 @@ export function currencyRule(value: any, options?: CurrencyOptionsInterface): bo
         regexPattern += "\\)";
     }
 
-    // End of a pattern
-    regexPattern += defaultOptions.symbol;
+    // End of a pattern (it used to append the raw, unescaped symbol, which only anchored by chance with "$")
+    regexPattern += "$";
 
     try {
         // Create regex object

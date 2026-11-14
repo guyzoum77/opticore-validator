@@ -10,7 +10,8 @@ export function alphaRule(value: any, options?: AlphaOptionsInterface): boolean 
     };
 
     const { locale, ignore } = defaultOptions;
-    let pattern: RegExp = alphaPatternsUtils[locale];
+    // own keys only: a locale such as "constructor" must not resolve to an Object.prototype member
+    let pattern: RegExp | undefined = Object.hasOwn(alphaPatternsUtils, locale!) ? alphaPatternsUtils[locale!] : undefined;
 
     if (!pattern) {
         // Fallback to 'en-US' if a locale pattern is not found

@@ -1,3 +1,5 @@
+import {SValidator} from "../services/validator.service";
+
 /**
  * Validates whether a value is a valid ISIN (International Security Identification Number).
  *
@@ -8,16 +10,10 @@ export function inRule(value: any): boolean {
     const isinPattern: RegExp = /^[A-Z]{2}[A-Z0-9]{10}$/; // ISIN pattern (two letters, followed by 10 alphanumeric characters)
 
     // Ensure the value matches the ISIN pattern
-    if (!isinPattern.test(value)) {
+    if (typeof value !== "string" || !isinPattern.test(value)) {
         return false;
     }
 
-    // Remove the last check digit
-    const isinWithoutCheckDigit = value.slice(0, -1);
-
-    // Convert the ISIN to a string of digits (using the Luhn algorithm)
-    const isinDigits: number[] = SValidator.convertToDigits(isinWithoutCheckDigit);
-
-    // Validate the check digit using the Luhn algorithm
-    return SValidator.isValidLuhn(isinDigits);
+    // Convert the whole ISIN, check digit included, to digits (letters become two digits) and verify it with Luhn
+    return SValidator.isValidLuhn(SValidator.convertToDigits(value));
 }

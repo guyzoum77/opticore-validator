@@ -1,6 +1,6 @@
 import {CCurrencies} from "../constants/currencies.constant";
 import {CCode} from "../constants/code.constant";
-import {CAlpha2Code, CCountryCode} from "../constants/alpha2Code.constant";
+import {CAlpha2Code} from "../constants/alpha2Code.constant";
 import {CAlpha3Code} from "../constants/alpha3Code.constant";
 
 export class SValidator {
@@ -60,8 +60,10 @@ export class SValidator {
 
         for (let char of isin) {
             if (/[A-Z]/.test(char)) {
-                // Convert letters to their corresponding digits (A=10, B=11, ..., Z=35)
-                digits.push(char.charCodeAt(0) - 55);
+                // Convert letters to their corresponding numbers (A=10, B=11, ..., Z=35), each digit counted alone
+                for (const digit of String(char.charCodeAt(0) - 55)) {
+                    digits.push(parseInt(digit, 10));
+                }
             } else {
                 // Convert numbers to digits
                 digits.push(parseInt(char, 10));

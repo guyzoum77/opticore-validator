@@ -21,6 +21,6 @@ export function containsRule(value: any, seed: string, options?: ContainsOptions
     }
 
     const occurrences: number = source.split(target).length - 1;
-    return occurrences >= minOccurrences;
+    return occurrences >= (minOccurrences ?? 1);
 }
   
